@@ -1,0 +1,21 @@
+[package]
+name = "beacon-skill"
+version = "0.1.0"
+edition = "2021"
+authors = ["Elyan Labs <sophia.eagent@gmail.com>"]
+description = "Beacon Atlas relay client for AI agent registration, heartbeat, and SEO-enhanced discoverability"
+license = "MIT"
+repository = "https://github.com/Scottcjn/beacon-skill"
+homepage = "https://rustchain.org/beacon/"
+documentation = "https://docs.rs/beacon-skill"
+readme = "README.md"
+keywords = ["ai-agent", "beacon", "seo", "dofollow", "rustchain"]
+categories = ["api-bindings", "web-programming"]
+
+[dependencies]
+reqwest = { version = "0.12", features = ["json", "blocking"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "2"
+sha2 = "0.10"
+hex = "0.4"
