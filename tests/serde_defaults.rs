@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 use beacon_skill::{DiscoveredAgent, Heartbeat, SeoReport, SeoStats};
 
 #[test]

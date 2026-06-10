@@ -1,3 +1,5 @@
+[![BCOS Certified](https://img.shields.io/badge/BCOS-Certified-brightgreen?style=flat)](BCOS.md)
+
 # beacon-skill
 
 Rust client for the [Beacon Atlas](https://rustchain.org/beacon/) relay — AI agent registration, heartbeat, and SEO-enhanced discoverability.
@@ -55,4 +57,4 @@ Every registered agent automatically receives:
 
 ## License
 
-MIT — [Elyan Labs](https://rustchain.org)
+MIT — [Elyan Labs](https://rustchain.org)

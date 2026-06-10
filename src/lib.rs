@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 //! # Beacon Skill
 //!
 //! Rust client for the Beacon Atlas relay — AI agent registration,
