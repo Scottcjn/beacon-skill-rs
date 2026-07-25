@@ -291,6 +291,7 @@ impl RelayClient {
                 self.base_url
             ))
             .send()?
+            .error_for_status()?
             .json()?;
 
         Ok(resp)
@@ -302,6 +303,7 @@ impl RelayClient {
             .http
             .get(format!("{}/beacon/relay/seo/report", self.base_url))
             .send()?
+            .error_for_status()?
             .json()?;
 
         Ok(resp)
@@ -318,7 +320,7 @@ impl RelayClient {
             format!("{}/beacon/relay/discover", self.base_url)
         };
 
-        let resp: Vec<DiscoveredAgent> = self.http.get(&url).send()?.json()?;
+        let resp: Vec<DiscoveredAgent> = self.http.get(&url).send()?.error_for_status()?.json()?;
         Ok(resp)
     }
 
@@ -331,6 +333,7 @@ impl RelayClient {
                 self.base_url
             ))
             .send()?
+            .error_for_status()?
             .json()?;
 
         Ok(resp)
@@ -345,6 +348,7 @@ impl RelayClient {
                 self.base_url
             ))
             .send()?
+            .error_for_status()?
             .text()?;
 
         Ok(resp)
@@ -356,6 +360,7 @@ impl RelayClient {
             .http
             .get(format!("{}/beacon/llms.txt", self.base_url))
             .send()?
+            .error_for_status()?
             .text()?;
 
         Ok(resp)
