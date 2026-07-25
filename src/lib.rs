@@ -163,11 +163,32 @@ impl RelayClient {
     /// Create a new relay client pointing at the given base URL.
     ///
     /// Default relay: `https://rustchain.org`
+    ///
+    /// TLS certificates are verified. If you run a self-hosted relay behind a
+    /// self-signed certificate, use [`RelayClient::new_accept_invalid_certs`].
     pub fn new(base_url: &str) -> Self {
+        Self::build(base_url, false)
+    }
+
+    /// Create a client that does **not** verify the relay's TLS certificate.
+    ///
+    /// # Security
+    ///
+    /// The relay token is a bearer credential: it is sent on every heartbeat
+    /// and is enough to impersonate the agent and rewrite its public SEO
+    /// fields. Without certificate verification anyone on the network path can
+    /// present their own certificate, read that token, and hand back forged
+    /// responses. Only use this for a local or self-hosted relay whose
+    /// certificate you cannot get signed.
+    pub fn new_accept_invalid_certs(base_url: &str) -> Self {
+        Self::build(base_url, true)
+    }
+
+    fn build(base_url: &str, accept_invalid_certs: bool) -> Self {
         Self {
             base_url: base_url.trim_end_matches('/').to_string(),
             http: Client::builder()
-                .danger_accept_invalid_certs(true)
+                .danger_accept_invalid_certs(accept_invalid_certs)
                 .build()
                 .unwrap_or_default(),
         }
